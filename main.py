@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from random import randint, shuffle
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+def index_continue(score):
+    x = randint(2,9)
+    y = randint(2,9)
+    z = x*y
+    L = [z,randint(10,81),randint(10,81),randint(10,81)]
+    shuffle(L)
+    return (
+                f'<p>{x}*{y}=?</p>'
+                f'<a href=/{score + 1 * (L[0]==z)}>{L[0]}</a><br>'
+                f'<a href=/{score + 1 * (L[1]==z)}>{L[1]}</a><br>'
+                f'<a href=/{score + 1 * (L[2]==z)}>{L[2]}</a><br>'
+                f'<a href=/{score + 1 * (L[3]==z)}>{L[3]}</a><br>'
+    )
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(index_continue(10))
